@@ -6,6 +6,12 @@
     color: var(--cor-secundaria);
 }
 
+h2{
+    text-transform: uppercase;
+    color: var(--cor-botao1);
+    padding-bottom: 35px;
+}
+
 label{
     display: block;
     padding: 15px 0px;
