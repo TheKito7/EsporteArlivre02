@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AtletaService } from '../../service/atleta-service';
-import { Pessoa } from '../../models/Pessoa';
+import { Atleta } from '../../models/Atleta';
 
 @Component({
   selector: 'app-atleta-component',
@@ -29,7 +29,7 @@ export class AtletaComponent {
   }
 
   salvarAtleta() {
-    const pessoaAtleta = new Pessoa()
+    const pessoaAtleta = new Atleta()
     pessoaAtleta.nome = this.nome
     pessoaAtleta.cpf = this.cpf
     pessoaAtleta.sexo = this.sexo
@@ -39,12 +39,30 @@ export class AtletaComponent {
     pessoaAtleta.cidade = this.cidade
     pessoaAtleta.uf = this.uf
 
-    this.atletaService.adicionar(pessoaAtleta)
+    this.atletaService.adicionarAtleta(pessoaAtleta)
+    .subscribe({
+      next:(resposta)=>{
+        console.log(resposta)
+      },error:(msgErro)=>{
+        console.log("Erro ao cadastrar  o atleta ", msgErro)
+      }
 
-    this.atletaService.listar()
+    })
 
-    this.limparAtributos()
+       this.limparAtributos()
 
+  }
+
+  listarAtleta(idAtleta: number){
+    this.atletaService.listarAtleta(idAtleta)
+    .subscribe({
+      next:(dados)=>{
+        console.table(dados)
+      },
+      error:(msgErro)=>{
+        console.log("Erro ao listar atletas ", msgErro)
+      }
+    })
   }
 
   limparAtributos() {
