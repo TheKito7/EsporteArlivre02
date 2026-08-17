@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { AtletaService } from '../../service/atleta-service';
 import { Atleta } from '../../models/Atleta';
 import { Router } from '@angular/router';
@@ -12,7 +12,8 @@ import { Router } from '@angular/router';
 export class AtletaListaComponent {
 
   //DECLARAÇÃO ARRAY DO TIPO PESSOA
-  listaAtletas: Atleta[] = []
+  //listaAtletas: Atleta[] = []
+  listaAtletas = signal<Atleta[]>([])
 
   //DECLARAÇÃO CONSTRUTOR
   constructor(private router: Router, private http: AtletaService) { }
@@ -27,9 +28,8 @@ export class AtletaListaComponent {
     this.http.listarAtletas()
       .subscribe({
         next: (dados) => {
-          console.table(dados)
-
-          this.listaAtletas = [...dados].sort((a, b) => a.nome.localeCompare(b.nome))
+          //this.listaAtletas = [...dados].sort((a, b) => a.nome.localeCompare(b.nome))
+          this.listaAtletas.set([...dados].sort((a, b) => a.nome.localeCompare(b.nome)))
         },
         error: (msgErro) => {
           console.log("Erro ao cadastrar  o atleta ", msgErro)
@@ -45,6 +45,10 @@ export class AtletaListaComponent {
       this.http.exluirAtleta(atleta)
       .subscribe({
         next:(dados)=>{
+           this.listaAtletas.update(elem =>
+            elem.filter(a => a.id !== atleta.id)
+          );
+          
           console.log('Atleta excluído com Sucesso ', dados)
         },
         error: (msgErro) => {
