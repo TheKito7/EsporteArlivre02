@@ -45,6 +45,13 @@ export class AtletaService {
     return this.http.put<Atleta>(urlApi, atleta)
   }
 
+  //ALTERAR NA API
+  alterarAtleta2(idAtleta: number, atleta: Atleta):Observable<Atleta>{
+    const urlApi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/atleta/${idAtleta}`
+
+    return this.http.put<Atleta>(urlApi, atleta)
+  }
+
   /*
   private atletas: Pessoa[] = []
 

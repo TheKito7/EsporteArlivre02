@@ -11,6 +11,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './atleta-component.css',
 })
 export class AtletaComponent {
+
+
   //DELCARAÇÃO DOS ATRIBUTOS DO COMPONENTE
   id = 0
   nome = ''
@@ -26,7 +28,11 @@ export class AtletaComponent {
   idAtleta = 0
 
   //DECLARAÇÃO DO CONSTRUTOR  
-  constructor(private atletaService: AtletaService, private route: ActivatedRoute, private cdr: ChangeDetectorRef) { }
+  constructor(
+    private atletaService: AtletaService, 
+    private route: ActivatedRoute, 
+    private cdr: ChangeDetectorRef) 
+    { }
 
   //DECLARAÇÃO DE FUNÇÕES
   exibeDados() {
@@ -40,7 +46,6 @@ export class AtletaComponent {
       this.editar = true
       this.carregaCampo(this.idAtleta)
     }
-
   }
 
   carregaCampo(idAtleta: number) {
@@ -57,7 +62,9 @@ export class AtletaComponent {
           this.cidade = objAtleta.cidade
           this.uf = objAtleta.uf
 
+          //PARA DETECTAR ALTERAÇÃO NO COMPENENT
           this.cdr.detectChanges()
+
         }, error: (msgErro) => {
           console.log("Erro ao Listar  o atleta ", msgErro)
         }

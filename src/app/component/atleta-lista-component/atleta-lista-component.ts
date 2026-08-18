@@ -57,6 +57,7 @@ export class AtletaListaComponent {
       })
 
     }
+    
     this.ngOnInit()
   }
 
