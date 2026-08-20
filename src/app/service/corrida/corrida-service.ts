@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Corrida } from '../../models/Corrida';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +9,7 @@ import { Corrida } from '../../models/Corrida';
 export class CorridaService {
   constructor(private http: HttpClient) { }
 
+  //SALVAR A CORRIDA
   salvarCorrida(corrida: Corrida) {
     const urlAPi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida`
 
@@ -23,35 +24,24 @@ export class CorridaService {
       })
   }
 
-  listarCorridas(){
+  //LISTAR TODAS AS CORRIDAS
+  listarCorridas(): Observable<Corrida[]> {
     const urlAPi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida`
 
-    this.http.get<Corrida[]>(urlAPi)
-      .subscribe({
-        next: (corridasAPI) => {
-          return corridasAPI
-        },
-        error: (msgErro) => {
-          return msgErro
-        }
-      })
+    return this.http.get<Corrida[]>(urlAPi)
+
   }
 
-  listarCorrida(idCorrida: Number){
+  //LISTAR UMA CORRIDA
+  listarCorrida(idCorrida: Number): Observable<Corrida> {
     const urlAPi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida/${idCorrida}`
 
-    this.http.get<Corrida>(urlAPi)
-      .subscribe({
-        next: (corridaAPI) => {
-          return corridaAPI
-        },
-        error: (msgErro) => {
-          return msgErro
-        }
-      })
+    return this.http.get<Corrida>(urlAPi)
+
   }
 
-  excluirCorrida(idCorrida: Number){
+  //EXCLUIR UMA CORRIDA
+  excluirCorrida(idCorrida: Number) {
     const urlAPi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida/${idCorrida}`
 
     this.http.delete<Corrida>(urlAPi)
@@ -65,8 +55,9 @@ export class CorridaService {
       })
   }
 
-  alterarCorrida(corrida: Corrida){
-     const urlAPi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida/${corrida.id}`
+  //ALTERAR CORRIDA
+  alterarCorrida(corrida: Corrida) {
+    const urlAPi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida/${corrida.id}`
 
     this.http.put<Corrida>(urlAPi, corrida)
       .subscribe({
