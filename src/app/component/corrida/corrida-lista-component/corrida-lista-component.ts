@@ -32,12 +32,22 @@ export class CorridaListaComponent {
       })
   }
 
-  excluir(objCorrida: Corrida){
-    if(confirm(`Deseja excluir a corrida ${objCorrida.descricao_corrida}`)){
+  excluir(objCorrida: Corrida) {
+    if (confirm(`Deseja excluir a corrida ${objCorrida.descricao_corrida}`)) {
       this.corridaService.excluirCorrida(objCorrida.id)
+        .subscribe({
+          next: (repostaAPI) => {
+            this.listaCorridas.update(elem =>
+              elem.filter(a => a.id !== objCorrida.id)            )
+            console.log('Atleta excluído com Sucesso ', repostaAPI)
+          },
+          error: (msgErro) => {
+            return msgErro
+          }
+        })
     }
 
-    this.listar()
+    this.ngOnInit()
 
   }
 
