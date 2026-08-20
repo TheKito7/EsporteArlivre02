@@ -1,6 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { CorridaService } from '../../../service/corrida/corrida-service';
 import { Corrida } from '../../../models/Corrida';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-corrida-lista-component',
@@ -12,7 +14,10 @@ export class CorridaListaComponent {
 
   listaCorridas = signal<Corrida[]>([])
 
-  constructor(private corridaService: CorridaService) { }
+  constructor(
+     private corridaService: CorridaService,
+     private router: Router
+    ) { }
 
   ngOnInit() {
     this.listar()
@@ -49,6 +54,12 @@ export class CorridaListaComponent {
 
     this.ngOnInit()
 
+  }
+
+  carregandoDadosForm(ObjCorrida: Corrida){
+
+    this.router.navigate(["/alteracorrida", ObjCorrida.id])
+    
   }
 
 
