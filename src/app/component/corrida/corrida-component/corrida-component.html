@@ -1,5 +1,5 @@
 <div id="div-form">
-    <h2>Cadastro Corrida </h2>
+    <h2>{{editar? 'Alterar': 'Cadastrar' }} Corrida </h2>
     
     <form id="form-atleta" (submit)="dadosFormulario()" >
         <label for="corrida">Descrição da Corrida</label>
@@ -16,7 +16,7 @@
         </div>
 
         <div id="div-btns">
-            <button type="submit" id="btnAdd"> Cadastrar Corrida </button>
+            <button type="submit" id="btnAdd">{{editar? 'Alterar': 'Cadastrar' }} Corrida </button>
             <button type="reset" id="btnLimpar"> Limpar </button>
         </div>
 
