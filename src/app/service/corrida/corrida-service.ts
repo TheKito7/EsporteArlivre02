@@ -10,18 +10,11 @@ export class CorridaService {
   constructor(private http: HttpClient) { }
 
   //SALVAR A CORRIDA
-  salvarCorrida(corrida: Corrida) {
+  salvarCorrida(corrida: Corrida):Observable<Corrida> {
     const urlAPi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida`
 
-    this.http.post<Corrida>(urlAPi, corrida)
-      .subscribe({
-        next: (respostaAPI) => {
-          return respostaAPI
-        },
-        error: (msgErro) => {
-          return msgErro
-        }
-      })
+    return this.http.post<Corrida>(urlAPi, corrida)
+      
   }
 
   //LISTAR TODAS AS CORRIDAS
@@ -49,18 +42,11 @@ export class CorridaService {
   }
 
   //ALTERAR CORRIDA
-  alterarCorrida(corrida: Corrida) {
+  alterarCorrida(corrida: Corrida): Observable<Corrida> {
     const urlAPi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida/${corrida.id}`
 
-    this.http.put<Corrida>(urlAPi, corrida)
-      .subscribe({
-        next: (repostaAPI) => {
-          return repostaAPI
-        },
-        error: (msgErro) => {
-          return msgErro
-        }
-      })
+    return this.http.put<Corrida>(urlAPi, corrida)
+      
   }
 
 }
