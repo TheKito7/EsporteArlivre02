@@ -9,13 +9,26 @@ h2{
     margin: 30px 0px;
 }
 
-.item-corrida{
-    margin: 20px 0px;
-    padding: 10px;
+.item-corrida, .corrida, .links-lista
+{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
+
+.item-corrida{
+    margin: 20px 0px;
+    padding: 10px;
+}
+
+.dados-corrida{
+    width: 80%;
+}
+
+.links-lista{
+    width: 20%;
+}
+
 
 /*FORMATAÇÃO DOS BOTÕES*/
 .lnk-editar, .lnk-excluir {
