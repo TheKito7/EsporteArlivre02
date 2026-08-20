@@ -12,7 +12,7 @@
                         {{elem.distancia25km ? ' 25KM' :''}}
                     </span>
                     <span class="links-lista">
-                        <a class="lnk-editar"> Editar </a>
+                        <a class="lnk-editar" (click)="carregandoDadosForm(elem)"> Editar </a>
                         <a class="lnk-excluir" (click)="excluir(elem)"> Excluir </a>
                     </span>
                 </span>
