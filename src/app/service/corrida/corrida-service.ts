@@ -44,15 +44,8 @@ export class CorridaService {
   excluirCorrida(idCorrida: Number) {
     const urlAPi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/corrida/${idCorrida}`
 
-    this.http.delete<Corrida>(urlAPi)
-      .subscribe({
-        next: (repostaAPI) => {
-          return repostaAPI
-        },
-        error: (msgErro) => {
-          return msgErro
-        }
-      })
+    return this.http.delete<Corrida>(urlAPi)
+      
   }
 
   //ALTERAR CORRIDA

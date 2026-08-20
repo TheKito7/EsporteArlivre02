@@ -30,6 +30,14 @@ export class CorridaComponent {
     corrida.distancia25km = this.distancia25km
 
     this.corridaService.salvarCorrida(corrida)
+      .subscribe({
+        next: (respostaAPI) => {
+          return respostaAPI
+        },
+        error: (msgErro) => {
+          return msgErro
+        }
+      })
 
     this.limparAtributos()
 
