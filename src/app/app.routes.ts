@@ -8,33 +8,37 @@ import { CorridaListaComponent } from './component/corrida/corrida-lista-compone
 
 export const routes: Routes = [
     {
-        path:'',
-        redirectTo:"/home",
+        path: '',
+        redirectTo: "/home",
         pathMatch: 'full'
     },
     {
-        path:"home",
-        component:HomeComponent
+        path: "home",
+        component: HomeComponent
     },
     {
-        path:"cadastroatleta",
-        component:AtletaComponent
+        path: "cadastroatleta",
+        component: AtletaComponent
     },
     {
-        path:"cadastroatleta/:id",
-        component:AtletaComponent
+        path: "cadastroatleta/:id",
+        component: AtletaComponent
     },
     {
-        path:"listaatleta",
-        component:AtletaListaComponent
+        path: "listaatleta",
+        component: AtletaListaComponent
     },
     {
-        path:"cadastrocorrida",
-        component:CorridaComponent
+        path: "cadastrocorrida",
+        component: CorridaComponent
     },
-     {
-        path:"listacorrida",
-        component:CorridaListaComponent
+    {
+        path: "alteracorrida/:id",
+        component: CorridaComponent
     },
-    
+    {
+        path: "listacorrida",
+        component: CorridaListaComponent
+    },
+
 ];
