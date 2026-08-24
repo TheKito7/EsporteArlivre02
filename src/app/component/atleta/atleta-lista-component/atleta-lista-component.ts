@@ -39,6 +39,26 @@ export class AtletaListaComponent {
 
   }
 
+  calcularIdade(dataNascimento: string): number | string {
+    if (!dataNascimento) return ''; // Retorna "Não Informado" se estiver vazio
+  
+    const dataNasc = new Date(dataNascimento);
+    
+    // Tratamento caso a MockAPI traga os dados falsos antigos como "data_nascimento 1"
+    if (isNaN(dataNasc.getTime())) return 'Data Inválida';
+  
+    const hoje = new Date();
+    let idade = hoje.getFullYear() - dataNasc.getFullYear();
+    const mes = hoje.getMonth() - dataNasc.getMonth();
+  
+    // Se o mês atual for menor que o mês de nascimento, ou se for o mesmo mês mas o dia atual for menor, subtrai 1 ano
+    if (mes < 0 || (mes === 0 && hoje.getDate() < dataNasc.getDate())) {
+      idade--;
+    }
+  
+    return idade;
+  }
+
   //EXCLUIR ATLETA
   excluirAtleta(atleta: Atleta){
     if(confirm(`Deseja excluir ${atleta.nome} da competição? `)){

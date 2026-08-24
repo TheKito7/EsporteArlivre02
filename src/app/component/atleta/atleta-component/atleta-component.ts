@@ -23,6 +23,7 @@ export class AtletaComponent {
   bairro = ''
   cidade = ''
   uf = ''
+  data_nascimento = ''
 
   editar = false
   idAtleta = 0
@@ -61,6 +62,7 @@ export class AtletaComponent {
           this.bairro = objAtleta.bairro
           this.cidade = objAtleta.cidade
           this.uf = objAtleta.uf
+          this.data_nascimento = objAtleta.data_nascimento
 
           //PARA DETECTAR ALTERAÇÃO NO COMPENENT
           this.cdr.detectChanges()
@@ -81,6 +83,7 @@ export class AtletaComponent {
     pessoaAtleta.bairro = this.bairro
     pessoaAtleta.cidade = this.cidade
     pessoaAtleta.uf = this.uf
+    pessoaAtleta.data_nascimento = this.data_nascimento
 
     if (!this.editar) {
       this.atletaService.adicionarAtleta(pessoaAtleta)
@@ -134,6 +137,7 @@ export class AtletaComponent {
     this.bairro = ''
     this.cidade = ''
     this.uf = ''
+    this.data_nascimento = ''
   }
 
 
