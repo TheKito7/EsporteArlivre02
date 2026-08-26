@@ -9,8 +9,8 @@ describe('InscricaoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InscricaoComponent ], // Declara o componente que estamos testando
-      imports: [ 
+       imports: [ InscricaoComponent , // Declara o componente que estamos testando
+          
         HttpClientTestingModule, // Simula o HttpClient dos serviços
         FormsModule              // Necessário para o [(ngModel)] do formulário funcionar
       ]
