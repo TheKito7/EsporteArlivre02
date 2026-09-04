@@ -9,4 +9,6 @@ export class Atleta{
     cidade: string = ''
     uf: string = ''
     data_nascimento: string = ''
+    peso: number = 0
+    altura: number = 0
 }

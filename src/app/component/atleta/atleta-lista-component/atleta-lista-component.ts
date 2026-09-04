@@ -85,6 +85,12 @@ export class AtletaListaComponent {
   buscarPessoa(idAtleta: Atleta){
     this.router.navigate(['/cadastroatleta', idAtleta])
   }
-
+  
+  calcularIMC(peso: number, altura: number): string {
+    if (!peso || !altura) return '0.00';
+    const alturaEmMetros = altura > 3 ? altura / 100 : altura;
+    const imc = peso / (alturaEmMetros * alturaEmMetros);
+    return imc.toFixed(2);
+  }
   
 }//FIM COMPONENT AtletaListaComponent

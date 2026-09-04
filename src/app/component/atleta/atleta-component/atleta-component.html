@@ -19,6 +19,13 @@
         <label for="cep">CEP</label>
         <input type="text" name="cep"  [(ngModel)] = "cep" id="cep" class="input02" required maxlength="9" placeholder="Informe seu cep" >
 
+        <label for="peso">Peso</label>
+        <!-- Corrigido o for, placeholder e alterado para type="number" (com suporte a decimais) -->
+        <input type="number" step="0.01" name="peso" [(ngModel)]="peso" id="peso" class="input02" required placeholder="Informe seu peso">
+
+        <label for="altura">Altura</label>
+        <!-- Adicionado o campo de altura com type="number" -->
+        <input type="number" step="0.01" name="altura" [(ngModel)]="altura" id="altura" class="input02" required placeholder="Informe sua altura">
         <label for="rua_logradouro">Rua/Logradouro</label>
         <input type="text" name="rua_logradouro"  [(ngModel)] = "rua_logradouro" id="rua_logradouro" class="input01" required maxlength="100" placeholder="Informe rua/logradouro">
 
